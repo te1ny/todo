@@ -1,4 +1,7 @@
 #include "task.hpp"
+#include <qdebug.h>
+#include <qlogging.h>
+#include <qnamespace.h>
 #include <stdexcept>
 #include <string>
 
@@ -52,18 +55,21 @@ Task Task::fromJson(const nlohmann::json& json) {
     QString createdDateStr = QString::fromStdString(json["created_date"].get<std::string>());
     QString editedDateStr  = QString::fromStdString(json["edited_date"].get<std::string>());
 
+
     QString title          = QString::fromStdString(json["title"].get<std::string>());
     QString description    = QString::fromStdString(json["description"].get<std::string>());
     bool completed         = json["completed"].get<bool>();
-    QDateTime createdDate  = QDateTime::fromString(std::move(createdDateStr));
-    QDateTime editedDate  = QDateTime::fromString(std::move(editedDateStr));
+    QDateTime createdDate  = QDateTime::fromString(std::move(createdDateStr), Qt::ISODate);
+    QDateTime editedDate  = QDateTime::fromString(std::move(editedDateStr), Qt::ISODate);
+
+    QDebug(QtMsgType::QtDebugMsg) << createdDate;
 
     return Task{
         std::move(title),
         std::move(description),
         completed,
-        std::move(createdDate),
-        std::move(editedDate)
+        std::move(editedDate),
+        std::move(createdDate)
     };
 }
 
@@ -77,7 +83,6 @@ const QString& Task::getDescription() const {
 
 void Task::setCompleted(bool completed) {
     mCompleted = completed;
-    mEditedDate = QDateTime::currentDateTime();
 }
 
 bool Task::isCompleted() const {

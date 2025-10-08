@@ -27,6 +27,8 @@ add_executable(${PROJECT_NAME}
     src/task_loader.cpp
     src/task_dialog.cpp
     src/task_dialog.ui
+    src/main_window.cpp
+    src/main_window.ui
 )
 
 # LINKING

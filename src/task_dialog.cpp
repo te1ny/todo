@@ -2,15 +2,18 @@
 #include "ui_task_dialog.h"
 
 #include <QString>
+#include <qpushbutton.h>
 
 TaskDialog::TaskDialog(QWidget* parent) 
     : QDialog(parent)
     , mUi(new Ui::TaskDialog)
     , mIsEdit(false)
     , mCompleted(false)
-    , mCreatedDate(QDateTime()){
+    , mCreatedDate(QDateTime()) {
     mUi->setupUi(this);
-    setWindowTitle("Add task | Добавление задачи");
+    setWindowTitle("Добавление задачи");
+    connect(mUi->okButton, &QPushButton::clicked, this, &QDialog::accept);
+    connect(mUi->rejectButton, &QPushButton::clicked, this, &QDialog::reject);
 }
 
 TaskDialog::TaskDialog(const Task& task, QWidget* parent) 
@@ -20,7 +23,11 @@ TaskDialog::TaskDialog(const Task& task, QWidget* parent)
     , mCompleted(task.isCompleted())
     , mCreatedDate(task.getCreatedDate()) {
     mUi->setupUi(this);
-    setWindowTitle("Edit task | Редактирование задачи");
+    setWindowTitle("Редактирование задачи");
+    mUi->taskTitle->setText(task.getTitle());
+    mUi->taskDescription->setText(task.getDescription());
+    connect(mUi->okButton, &QPushButton::clicked, this, &QDialog::accept);
+    connect(mUi->rejectButton, &QPushButton::clicked, this, &QDialog::reject);
 }
 
 TaskDialog::~TaskDialog() {
@@ -36,6 +43,6 @@ Task TaskDialog::getTask() {
         mUi->taskDescription->toPlainText(),
         mCompleted,
         QDateTime::currentDateTime(),
-        std::move(mCreatedDate)
+        mCreatedDate
     };
 }

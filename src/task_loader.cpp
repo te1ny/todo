@@ -17,6 +17,7 @@ QList<Task> TaskLoader::load(const QString& filePath) {
         throw std::runtime_error("Couldn't open the file for read. Path: " + filePath.toStdString());
 
     auto fileData = file.readAll();
+    file.close();
     nlohmann::json tasksJson = nlohmann::json::parse(fileData.toStdString());
     if (!tasksJson.is_array())
         throw std::runtime_error("JSON is not an array. Path: " + filePath.toStdString());
@@ -43,4 +44,5 @@ void TaskLoader::save(const QString& filePath, const QList<Task>& tasks) {
         json.push_back(Task::toJson(task));
 
     out << json.dump(4);
+    out.close();
 }

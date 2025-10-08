@@ -35,14 +35,12 @@ public:
     template <typename String>
     void setTitle(String&& title) {
         mTitle = std::forward<String>(title);
-        mEditedDate = QDateTime::currentDateTime();
     }
     const QString& getTitle() const;
 
     template <typename String>
     void setDescription(String&& description) {
         mDescription = std::forward<String>(description);
-        mEditedDate = QDateTime::currentDateTime();
     }
     const QString& getDescription() const;
 
