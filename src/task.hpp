@@ -5,8 +5,6 @@
 #include <QDateTime>
 
 #include <nlohmann/json.hpp>
-#include <qdatetime.h>
-#include <utility>
 
 class Task {
 private:
