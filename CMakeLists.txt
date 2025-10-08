@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 4.1)
 project(todo
-    VERSION 0.0.1
+    VERSION 0.1.0
     LANGUAGES CXX
 )
 
@@ -27,6 +27,8 @@ add_executable(${PROJECT_NAME}
     src/task_loader.cpp
     src/task_dialog.cpp
     src/task_dialog.ui
+    src/main_window.cpp
+    src/main_window.ui
 )
 
 # LINKING
