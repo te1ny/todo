@@ -19,12 +19,14 @@ find_package(nlohmann_json 3.12.0 REQUIRED)
 # QT
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTORCC OFF)
 
 add_executable(${PROJECT_NAME} 
     src/main.cpp
     src/task.cpp
     src/task_loader.cpp
+    src/task_dialog.cpp
+    src/task_dialog.ui
 )
 
 # LINKING
