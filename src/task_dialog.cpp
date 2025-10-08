@@ -2,7 +2,6 @@
 #include "ui_task_dialog.h"
 
 #include <QString>
-#include <qpushbutton.h>
 
 TaskDialog::TaskDialog(QWidget* parent) 
     : QDialog(parent)

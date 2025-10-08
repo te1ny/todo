@@ -4,12 +4,10 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QMenu>
+#include <QSignalBlocker>
 
 #include <nlohmann/json.hpp>
 #include <exception>
-#include <qdebug.h>
-#include <qlogging.h>
-#include <qobject.h>
 #include <stdexcept>
 
 #include "task_dialog.hpp"

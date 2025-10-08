@@ -1,7 +1,5 @@
 #include "task.hpp"
-#include <qdebug.h>
-#include <qlogging.h>
-#include <qnamespace.h>
+
 #include <stdexcept>
 #include <string>
 

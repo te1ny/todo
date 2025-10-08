@@ -4,10 +4,10 @@
 #include <QFileInfo>
 #include <QDir>
 
-#include <fstream>
-#include <nlohmann/json.hpp>
-
 #include <stdexcept>
+#include <fstream>
+
+#include <nlohmann/json.hpp>
 
 QList<Task> TaskLoader::load(const QString& filePath) {
     QFile file(filePath);
