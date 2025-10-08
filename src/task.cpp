@@ -60,8 +60,6 @@ Task Task::fromJson(const nlohmann::json& json) {
     QDateTime createdDate  = QDateTime::fromString(std::move(createdDateStr), Qt::ISODate);
     QDateTime editedDate  = QDateTime::fromString(std::move(editedDateStr), Qt::ISODate);
 
-    QDebug(QtMsgType::QtDebugMsg) << createdDate;
-
     return Task{
         std::move(title),
         std::move(description),
